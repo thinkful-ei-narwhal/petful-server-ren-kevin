@@ -9,9 +9,7 @@ app.use(cors({
   origin: CLIENT_ORIGIN
 }));
 
-app.get('/api/cat', (req, res) => {
-  res.json(store.cats[0]);
-});
+
 app.use('/people', require('../people/people.router'));
 app.use('/pets', require('../pets/pets.router'));
 app.use((error, req, res, next) => {
@@ -24,5 +22,4 @@ app.use((error, req, res, next) => {
   res.status(500).json(response);
 });
 
-const PORT = process.env.PORT || 8000;
 module.exports = app;

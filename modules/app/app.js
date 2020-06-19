@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const store = require('../../store');
-const CLIENT_ORIGIN = require('./config');
+const CLIENT_ORIGIN = require('../../config');
 
 const app = express();
 

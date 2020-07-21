@@ -6,64 +6,40 @@ const People = require('../people/people.service');
 
 const router = express.Router();
 
+
 router
   .route('/cats')
   .get((req, res, next) => {
-    return Pets.allCats()
-      .then(cats => {
-        res.json(cats);
-      })
-      .catch(next);
+    res.json(Pets.allCats());
   });
 
 router
   .route('/cats/cat')
   .get((req, res, next) => {
-    return Pets.getCat()
-      .then(cat => {
-        res.json(cat);
-      })
-      .catch(next);
+    res.json(Pets.getCat());
   })
   .delete(json, (req, res, next) => {
-    return Pets.dequeue(cat)
-      .then(() => {
-        People.dequeue();
-      })
-      .then(() => {
-        res.status(204).end();
-      })
-      .catch(next);
+    Pets.dequeue('cat');
+    People.dequeue();
+    res.status(204).end();
   });
 
 router
   .route('/dogs')
   .get((req, res, next) => {
-    return Pets.allDogs()
-      .then(dogs => {
-        res.json(dogs);
-      })
-      .catch(next);
+    res.json(Pets.allDogs());
   });
 
 router
   .route('/dogs/dog')
   .get((req, res, next) => {
-    return Pets.getDog()
-      .then(dog => {
-        res.json(dog);
-      })
-      .catch(next);
+    res.json(Pets.getDog());
   })
   .delete(json, (req, res, next) => {
-    return Pets.dequeue('dog')
-      .then(() => {
-        People.dequeue();
-      })
-      .then(() => {
-        res.status(204).end();
-      })
-      .catch(next);
+    Pets.dequeue('dog');
+    People.dequeue();
+    res.status(204).end();
+
   });
   
 module.exports = router;

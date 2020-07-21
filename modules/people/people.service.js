@@ -14,6 +14,10 @@ module.exports = {
     return people.all();
   },
 
+  show() {
+    return people.show();
+  },
+
   enqueue(person) {
     return people.enqueue(person);
   },

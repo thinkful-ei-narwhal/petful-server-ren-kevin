@@ -30,14 +30,14 @@ class Queue {
     if (node === this.last) {
       this.last = null;
     }
-    return node.value;
+    return node.value; 
   }
 
   show() {
     if (this.first === null) {
       console.log('nothing in queue');
     }
-    return this.first;
+    return this.first.value;
   }
 
   all() {
@@ -45,8 +45,9 @@ class Queue {
     let all = [];
     if (temp === null) {
       console.log('nothing in stack');
+      return all;
     } 
-    while(temp){//if ticket ask (temp !==null) not work
+    while(temp){
       all.push(temp.value);
       temp = temp.next;
     }

@@ -5,33 +5,24 @@ const People = require('./people.service');
 
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-  return People.get()
-    .then(people => {
-      res.json(people);
-    })
-    .catch(next);
-});
+router
+  .route('/')
+  .get((req, res) => {
+    res.json(People.get());
+  })
+  .post(json, (req, res) => {
+    const { person } = req.person;
+    res.status(201).json(People.enqueue(person));
+  });
 
-router.post('/', json, (req, res, next) => {
-  const { person } = req.person;
-  return People.enqueue(person)
-    .then(returnedPerson => {
-      res
-        .status(201)
-        .json(returnedPerson);
-    })
-    .catch(next);
-});
-
-router.delete('/', (req, res, next) => {
-  return People.dequeue()
-    .then(() => {
-      res
-        .status(204)
-        .json(People.get());
-    })
-    .catch(next);
-});
+router
+  .route('/next')
+  .get((req, res) => {
+    res.json(People.show());
+  })
+  .delete((req, res) => {
+    People.dequeue();
+    res.status(204).end();
+  });
 
 module.exports = router;

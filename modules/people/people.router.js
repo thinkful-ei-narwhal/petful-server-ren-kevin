@@ -11,7 +11,7 @@ router
     res.json(People.get());
   })
   .post(json, (req, res) => {
-    const { person } = req.person;
+    const { person } = req.body;
     res.status(201).json(People.enqueue(person));
   });
 

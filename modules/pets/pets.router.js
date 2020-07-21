@@ -14,7 +14,7 @@ router
   });
 
 router
-  .route('/cats/cat')
+  .route('/cats/next')
   .get((req, res, next) => {
     res.json(Pets.getCat());
   })
@@ -31,7 +31,7 @@ router
   });
 
 router
-  .route('/dogs/dog')
+  .route('/dogs/next')
   .get((req, res, next) => {
     res.json(Pets.getDog());
   })

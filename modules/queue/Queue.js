@@ -21,7 +21,7 @@ class Queue {
 
   dequeue() {
     if (this.first === null) {
-      return new Error('No more pets :(');
+      return null;
     }
 
     const node = this.first;
@@ -35,7 +35,7 @@ class Queue {
 
   show() {
     if (this.first === null) {
-      return new Error('No more pets :(');
+      return null;
     }
     return this.first.value;
   }
@@ -44,7 +44,7 @@ class Queue {
     let temp= this.first;
     let all = [];
     if (temp === null) {
-      return new Error('No more pets :(');
+      return null;
     } 
     while(temp){
       all.push(temp.value);

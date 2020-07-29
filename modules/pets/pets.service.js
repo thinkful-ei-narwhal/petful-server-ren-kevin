@@ -33,12 +33,12 @@ module.exports = {
 
   dequeue(type) {
     if (type === 'cat') {
-      const cat = pets.cats.dequeue();
-      pets.cats.enqueue(cat);
+      const cats = pets.cats.dequeue();
+      pets.cats.enqueue(cats);
     }
     if (type === 'dog') {
-      const dog = pets.dogs.dequeue();
-      pets.dogs.enqueue(dog);
+      const dogs = pets.dogs.dequeue();
+      pets.dogs.enqueue(dogs);
     }
   }
 };

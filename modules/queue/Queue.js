@@ -1,6 +1,9 @@
 const _Node = require('./node');
+
+
 class Queue {
   constructor() {
+    // Set initial data.
     this.first = null;
     this.last = null;
   }
@@ -8,49 +11,39 @@ class Queue {
   enqueue(data) {
     const node = new _Node(data);
 
-    if (this.first === null) {
-      this.first = node;
-    }
-
-    if (this.last) {
-      this.last.next = node;
-    }
+    if (this.first === null) this.first = node;
+    if (this.last) this.last.next = node;
 
     this.last = node;
   }
 
   dequeue() {
-    if (this.first === null) {
-      return null;
-    }
+    if (this.first === null) return;
 
-    const node = this.first;
+    // if (this.first.next === null) return;
+    let node = this.first;
     this.first = this.first.next;
+    if (node === this.last) this.last = null;
 
-    if (node === this.last) {
-      this.last = null;
-    }
-    return node.value; 
+    return node.value;
   }
 
   show() {
-    if (this.first === null) {
-      return null;
-    }
-    return this.first.value;
+    // Return the next item in the queue.
+    if (this.first.value !== null) return this.first.value;
+    return null;
   }
 
   all() {
-    let temp= this.first;
-    let all = [];
-    if (temp === null) {
-      return null;
-    } 
-    while(temp){
-      all.push(temp.value);
-      temp = temp.next;
+    // Return all items in the queue.
+    if (this.first === null) return false;
+    let current = this.first;
+    const tempArray = [];
+    while (current) {
+      tempArray.push(current.value);
+      current = current.next;
     }
-    return all;
+    return tempArray;
   }
 }
 

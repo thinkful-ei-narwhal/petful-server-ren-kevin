@@ -16,6 +16,8 @@ const morganOption = (NODE_ENV === 'production')
   : 'common';
 
 app.use(morgan(morganOption));
+app.use(express.json());
+
 app.use('/people', require('../people/people.router'));
 app.use('/pets', require('../pets/pets.router'));
 app.use((err, req, res, next) => {
